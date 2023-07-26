@@ -1,6 +1,6 @@
 # neobis_19
 ## Implementation of neobis task
-![](https://github.com/Nnuray/neobis_19/tree/main/week1/java.png)
+![](https://github.com/Nnuray/neobis_19/blob/main/week1/java.png)
 ***
 ### Study plan:
 #### week1
