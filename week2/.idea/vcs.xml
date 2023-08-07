@@ -2,5 +2,9 @@
 <project version="4">
   <component name="VcsDirectoryMappings">
     <mapping directory="$PROJECT_DIR$/.." vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/mySql" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/shop_neobis" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/sql" vcs="Git" />
+    <mapping directory="$PROJECT_DIR$/sql/neobis_19" vcs="Git" />
   </component>
 </project>
