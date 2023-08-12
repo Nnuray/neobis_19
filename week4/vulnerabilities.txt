@@ -1,0 +1,11 @@
+-думаю нужно добавить регистрацию и авторизацию, чтобы только авторизованные пользователи имели доступ к функциям
+-использовать проверку типов данных, чтобы информация который внес пользователь был корректным
+
+Vulnerabilities:
+1. Уязвимость "Out-of-bounds Write", CVE-2022-41854 (level 6.5)
+2. Уязвимость  "Deserialization of Untrusted Data" (level 9.8)
+3. Уязвимость CVE 2016-5007 (level 7.5)
+
+Solution:
+1,2: Update the org.yaml:snakeyaml dependency to a new version that does not have vulnerabilities.
+3: Update Security Config from 4.0.0 version to 4.2.15
