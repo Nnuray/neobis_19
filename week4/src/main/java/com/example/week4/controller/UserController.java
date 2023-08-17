@@ -45,13 +45,11 @@ public class UserController {
     public void updateUser(@PathVariable Integer id, @RequestBody ResponseUserDto responseUserDto) {
             userService.updateUser(id, responseUserDto);
         }
-   // @DeleteMapping("/user/{id}")  //endpoint4
-   // public void deleteUser(@PathVariable Integer id) {
-    //    ResponseUserDto user = userService.getUser(id);
-     //   if(user!=null){
-     //       userService.deleteUser(user);
-     //   }
-    //}
+
+    @DeleteMapping("/user/{id}")  //endpoint4
+    public void deleteUser(@PathVariable Integer id) {
+        userService.deleteUser(id);
+    }
 
     @GetMapping("/users")
     public List<ResponseUserDto> getAllUsers() {

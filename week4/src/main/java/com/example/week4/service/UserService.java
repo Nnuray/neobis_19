@@ -5,31 +5,25 @@ import com.example.week4.dto.ResponseUserDto;
 import com.example.week4.enums.Role;
 import com.example.week4.model.User;
 import com.example.week4.repository.UserRepository;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import static com.example.week4.dto.ResponseUserDto.toResponseUserDto;
 import static com.example.week4.dto.ResponseUserDto.toResponseUserDtos;
 
 @Service
 public class UserService {
     private final UserRepository userRepository;
-    private List<ResponseUserDto> userList;
 
-    public UserService(UserRepository userRepository){
-        this.userRepository = userRepository; //эти данные должны лежать в бд
-    }
-    public ResponseUserDto getUser(Integer id) {
-        return ResponseUserDto.toResponseUserDto(userRepository.findById(id).get());
+    @Autowired
+    public UserService(UserRepository userRepository) {
+        this.userRepository = userRepository;
     }
 
     public ResponseUserDto getUserById(int id) {
-        for (ResponseUserDto user : userList) {
-            if (user.getId() == id) {
-                return user;
-            }
-        }
-        return null;
+        return toResponseUserDto(userRepository.findById(id).get());
     }
     public String createUser(RequestUserDto userDto) {
         User user = User.builder()
@@ -44,25 +38,22 @@ public class UserService {
         return "Пользователь создан";
     }
 
-    public User updateUser(int id, ResponseUserDto userDto) {
-        for(ResponseUserDto user : userList) {
-            if (user.getId() == id) {
-                user.setId(userDto.getId());
-                user.setFirst_name(userDto.getFirst_name());
-                user.setLast_name(userDto.getLast_name());
-                user.setPhone(userDto.getPhone());
-                user.setEmail(userDto.getEmail());
-                user.setStatus(userDto.getStatus());
-                user.setRole(userDto.getRole());
-            }
-        }
+    public ResponseUserDto updateUser(int id, ResponseUserDto userDto) {
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Пользователь с таким айди не найден"));
 
-        return null;
+        user.setFirst_name(userDto.getFirst_name());
+        user.setLast_name(userDto.getLast_name());
+        user.setPhone(userDto.getPhone());
+        user.setEmail(userDto.getEmail());
+
+        userRepository.save(user);
+        return toResponseUserDto(user);
     }
 
-  //  public void deleteUser(ResponseUserDto user) {
-  //      userRepository.delete(user);
-  //  }
+    public void deleteUser(int userId) {
+        userRepository.deleteById(userId);
+    }
 
     public List<ResponseUserDto> getAllUsers() {
         return toResponseUserDtos(userRepository.findAll());
