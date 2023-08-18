@@ -26,7 +26,7 @@ public class JwtAuthFilter extends OncePerRequestFilter { // добавили ф
         final String jwt;
         final String username;
         if(authHeader == null || !authHeader.startsWith("Bearer ")){  // проверка заголовка
-            filterChain.doFilter(request,response); // передвет по цепочке следуещему фильтру
+            filterChain.doFilter(request,response); // переведет по цепочке следуещему фильтру
             return;
         }
         jwt = authHeader.substring(7); // bearer 6 букв и оно удаляяется
