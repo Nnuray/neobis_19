@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
+@RequestMapping("/api/users")
 public class UserController {
     private final UserService userService;
 
@@ -23,7 +24,7 @@ public class UserController {
         return "<h2> hey, user</h2>";
     }
 
-    @GetMapping("/user/{id}")   //endpoint1
+    @GetMapping("/{id}")   //endpoint1
     public ResponseEntity<ResponseUserDto> getUser(@PathVariable int id){
         ResponseUserDto user = userService.getUserById(id);
         if(user == null){
@@ -36,22 +37,22 @@ public class UserController {
         return ResponseEntity.ok(responseUserDto);
     }
 
-    @PostMapping("/user")    //endpoint2
+    @PostMapping()    //endpoint2
     public void createUser(@RequestBody RequestUserDto userDto) {
         userService.createUser(userDto);
     }
 
-    @PutMapping("/user/{id}")   //endpoints3
+    @PutMapping("/{id}")   //endpoints3
     public void updateUser(@PathVariable Integer id, @RequestBody ResponseUserDto responseUserDto) {
             userService.updateUser(id, responseUserDto);
         }
 
-    @DeleteMapping("/user/{id}")  //endpoint4
+    @DeleteMapping("/{id}")  //endpoint4
     public void deleteUser(@PathVariable Integer id) {
         userService.deleteUser(id);
     }
 
-    @GetMapping("/users")
+    @GetMapping()
     public List<ResponseUserDto> getAllUsers() {
         return userService.getAllUsers();
     }
