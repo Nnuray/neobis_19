@@ -43,7 +43,7 @@ public class JwtService {
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis())) // дата выпуска (текущая дата)
                 .setExpiration(new Date(System.currentTimeMillis() + 1000*60*24)) // дата истечения срока через 24 часа
-                .signWith(getSignInKey(), SignatureAlgorithm.ES256)   // подписать токен с секретным ключом
+                .signWith(getSignInKey(), SignatureAlgorithm.HS256)   // подписать токен с секретным ключом
                 .compact(); // вернет токен
 
     }

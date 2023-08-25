@@ -18,6 +18,10 @@ public class AuthenticationService {
     private final JwtService jwtService;
     private final AuthenticationManager authenticationManager;
     public AuthenticationResponse register(RegisterRequest request) {
+        if(repository.existsByEmail(request.getEmail())){
+            throw new IllegalArgumentException("Already exists");
+        }
+
         var user = User.builder()
                 .first_name(request.getFirst_name())
                 .last_name(request.getLast_name())

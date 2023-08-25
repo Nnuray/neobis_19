@@ -19,8 +19,8 @@ public class SecurityConfiguration {
     private final JwtAuthFilter jwtAuthFilter;
     private final AuthenticationProvider authenticationProvider;
     final String[] WHITELISTED_ENDPOINTS = {
-            "/api/auth/**",
-            "/api/auth/register/**"
+            "/api/auth/register/**",
+            "/api/auth/authenticate/**"
     };
 
 

@@ -14,6 +14,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private double score;
+    @Column(name = "score", nullable = false, columnDefinition = "float")
+    private float score;
 
 }
