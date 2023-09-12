@@ -1,8 +1,11 @@
-package com.example.week4.auth;
+package com.example.week4.service;
 
-import com.example.week4.config.JwtService;
+import com.example.week4.dto.auth.AuthenticationRequest;
+import com.example.week4.dto.auth.AuthenticationResponse;
+import com.example.week4.dto.auth.RegisterRequest;
+import com.example.week4.jwt.JwtService;
 import com.example.week4.enums.Role;
-import com.example.week4.model.User;
+import com.example.week4.entity.User;
 import com.example.week4.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.authentication.AuthenticationManager;
@@ -23,8 +26,8 @@ public class AuthenticationService {
         }
 
         var user = User.builder()
-                .first_name(request.getFirst_name())
-                .last_name(request.getLast_name())
+                .firstName(request.getFirst_name())
+                .lastName(request.getLast_name())
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)

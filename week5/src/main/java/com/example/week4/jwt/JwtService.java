@@ -1,4 +1,4 @@
-package com.example.week4.config;
+package com.example.week4.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

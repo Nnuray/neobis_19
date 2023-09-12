@@ -1,5 +1,9 @@
-package com.example.week4.auth;
+package com.example.week4.controller;
 
+import com.example.week4.dto.auth.AuthenticationRequest;
+import com.example.week4.dto.auth.AuthenticationResponse;
+import com.example.week4.dto.auth.RegisterRequest;
+import com.example.week4.service.AuthenticationService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;

@@ -1,17 +1,18 @@
 package com.example.week4.service;
 
-import com.example.week4.dto.RequestUserDto;
-import com.example.week4.dto.ResponseUserDto;
+import com.example.week4.dto.user.RequestUserDto;
+import com.example.week4.dto.user.ResponseUserDto;
 import com.example.week4.enums.Role;
-import com.example.week4.model.User;
+import com.example.week4.entity.User;
+import com.example.week4.enums.Status;
 import com.example.week4.repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-import static com.example.week4.dto.ResponseUserDto.toResponseUserDto;
-import static com.example.week4.dto.ResponseUserDto.toResponseUserDtos;
+import static com.example.week4.dto.user.ResponseUserDto.toResponseUserDto;
+import static com.example.week4.dto.user.ResponseUserDto.toResponseUserDtos;
 
 @Service
 public class UserService {
@@ -27,10 +28,10 @@ public class UserService {
     }
     public String createUser(RequestUserDto userDto) {
         User user = User.builder()
-                .first_name(userDto.getFirst_name())
-                .last_name(userDto.getLast_name())
-                .phone(userDto.getPhone())
-                .status(userDto.getStatus())
+                .firstName(userDto.getFirstName())
+                .lastName(userDto.getLastName())
+                .phoneNumber(userDto.getPhoneNumber())
+                .status(Status.ACTIVE)
                 .email(userDto.getEmail())
                 .role(Role.USER)
                 .build();
@@ -42,9 +43,9 @@ public class UserService {
         User user = userRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("Пользователь с таким айди не найден"));
 
-        user.setFirst_name(userDto.getFirst_name());
-        user.setLast_name(userDto.getLast_name());
-        user.setPhone(userDto.getPhone());
+        user.setFirstName(userDto.getFirstName());
+        user.setLastName(userDto.getLastName());
+        user.setPhoneNumber(userDto.getPhoneNumber());
         user.setEmail(userDto.getEmail());
 
         userRepository.save(user);

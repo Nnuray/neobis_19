@@ -1,4 +1,4 @@
-package com.example.week4.config;
+package com.example.week4.jwt;
 
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;

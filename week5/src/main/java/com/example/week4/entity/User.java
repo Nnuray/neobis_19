@@ -1,6 +1,7 @@
-package com.example.week4.model;
+package com.example.week4.entity;
 
 import com.example.week4.enums.Role;
+import com.example.week4.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
@@ -21,12 +22,13 @@ public class User implements UserDetails {
     @Id // чтобы айди был уникальным
     @GeneratedValue(strategy = GenerationType.IDENTITY) //сделает генератор автоматический
     private int id;
-    private String first_name;
-    private String last_name;
-    private String phone;
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
     private String email;
     private String password;
-    private String status;
+    @Enumerated(EnumType.STRING)
+    private Status status;
     @Enumerated(EnumType.STRING) // admin/user
     private Role role;
 

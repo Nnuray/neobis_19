@@ -1,7 +1,7 @@
 package com.example.week4.controller;
 
-import com.example.week4.dto.RequestUserDto;
-import com.example.week4.dto.ResponseUserDto;
+import com.example.week4.dto.user.RequestUserDto;
+import com.example.week4.dto.user.ResponseUserDto;
 import com.example.week4.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -25,14 +25,14 @@ public class UserController {
     }
 
     @GetMapping("/{id}")   //endpoint1
-    public ResponseEntity<ResponseUserDto> getUser(@PathVariable int id){
+    public ResponseEntity<ResponseUserDto> getUserById(@PathVariable int id){
         ResponseUserDto user = userService.getUserById(id);
         if(user == null){
             return ResponseEntity.notFound().build();
         }
         ResponseUserDto responseUserDto = new
-                ResponseUserDto(user.getId(), user.getFirst_name(),
-                user.getLast_name(), user.getPhone(), user.getEmail(),user.getStatus(),
+                ResponseUserDto(user.getId(), user.getFirstName(),
+                user.getLastName(), user.getPhoneNumber(), user.getEmail(),user.getStatus(),
                 user.getRole());
         return ResponseEntity.ok(responseUserDto);
     }

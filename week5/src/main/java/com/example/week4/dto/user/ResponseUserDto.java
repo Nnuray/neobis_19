@@ -1,6 +1,6 @@
-package com.example.week4.dto;
+package com.example.week4.dto.user;
 
-import com.example.week4.model.User;
+import com.example.week4.entity.User;
 import lombok.*;
 
 import java.util.List;
@@ -12,9 +12,9 @@ import java.util.List;
 @Builder
 public class ResponseUserDto {
     private int id;
-    private String first_name;
-    private String last_name;
-    private String phone;
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
     private String email;
     private String status;
     private String role;
@@ -22,11 +22,11 @@ public class ResponseUserDto {
     public static ResponseUserDto toResponseUserDto(User user) {//конвертировать одного юсера
         return ResponseUserDto.builder()
                 .id(user.getId())
-                .first_name(user.getFirst_name())
-                .last_name(user.getLast_name())
-                .phone(user.getPhone())
+                .firstName(user.getFirstName())
+                .lastName(user.getLastName())
+                .phoneNumber(user.getPhoneNumber())
                 .email(user.getEmail())
-                .status(user.getStatus())
+                .status(user.getStatus().name())
                 .role(user.getRole().name())
                 .build();
     }

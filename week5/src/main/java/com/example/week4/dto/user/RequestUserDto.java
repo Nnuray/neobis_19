@@ -1,4 +1,4 @@
-package com.example.week4.dto;
+package com.example.week4.dto.user;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -9,9 +9,9 @@ import lombok.Setter;
 @AllArgsConstructor
 @NoArgsConstructor
 public class RequestUserDto {
-    private String first_name;
-    private String last_name;
-    private String phone;
+    private String firstName;
+    private String lastName;
+    private String phoneNumber;
     private String email;
     private String status;
 }

@@ -1,4 +1,4 @@
-package com.example.week4.auth;
+package com.example.week4.dto.auth;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;
