@@ -1,21 +1,21 @@
 package com.example.week4.controller;
 
-import com.example.week4.dto.order.RequestOrderDTO;
+import com.example.week4.dto.order.RequestOrderDto;
 import com.example.week4.dto.order.ResponseOrderDto;
 import com.example.week4.dto.user.ResponseUserDto;
+import com.example.week4.entity.User;
 import com.example.week4.service.OrderService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
-@RequestMapping("/api/users")
-public class orderController {
+@AllArgsConstructor
+@RequestMapping("/api/orders")
+public class OrderController {
     private final OrderService orderService;
-    @Autowired
-    public orderController(OrderService orderService){
-        this.orderService=orderService;
-    }
+
     @GetMapping("/{id}")
     public ResponseEntity<ResponseOrderDto> getOderById(@PathVariable int id){
         ResponseUserDto user = orderService.getOrderById(id);
@@ -27,8 +27,9 @@ public class orderController {
         return ResponseEntity.ok(responseOrderDto);
     }
 
-    @PostMapping("/{CreateOrder")
-    public void createOrder(@RequestBody RequestOrderDTO orderDto) {
-        OrderService.createOrder(orderDto);
+    @PostMapping("/create")
+    public ResponseOrderDto createOrder(@RequestBody RequestOrderDto orderDto,
+                                        @AuthenticationPrincipal User user) {
+        return orderService.createOrder(orderDto, user);
     }
 }

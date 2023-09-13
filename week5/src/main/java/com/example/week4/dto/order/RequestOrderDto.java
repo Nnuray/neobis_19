@@ -7,11 +7,8 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class RequestOrderDTO {
-    private int id;
-    private String productName;
-    private String status;
+public class RequestOrderDto {
     private int productId;
-    private int userId;
+    private int quantity;
 
 }

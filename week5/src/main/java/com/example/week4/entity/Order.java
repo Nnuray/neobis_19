@@ -1,12 +1,14 @@
 package com.example.week4.entity;
+
 import com.example.week4.enums.Status;
 import jakarta.persistence.*;
 import lombok.*;
+import org.hibernate.annotations.CreationTimestamp;
 
 import java.time.LocalDateTime;
 
 @Entity
-@Table(name = "order")
+@Table(name = "orders")
 @Getter
 @Setter
 @AllArgsConstructor
@@ -16,15 +18,16 @@ public class Order {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
-    private String productName;
     @Enumerated(EnumType.STRING)
     private Status status;
-    private int productId;
-    private int userId;
+    @CreationTimestamp
     private LocalDateTime orderDate;
     private int quantity;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+    @ManyToOne
+    @JoinColumn(name = "product_id")
+    private Product product;
 
-    public Order(int id, String productName, int userId) {
-
-    }
 }

@@ -1,4 +1,4 @@
 package com.example.week4.controller;
 
-public class productController {
+public class ProductController {
 }
