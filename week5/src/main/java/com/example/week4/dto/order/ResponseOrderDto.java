@@ -1,6 +1,7 @@
 package com.example.week4.dto.order;
 
-import com.example.week4.dto.product.ResponseProductDTO;
+import com.example.week4.dto.product.ResponseProductDto;
+import com.example.week4.dto.product.ResponseProductDto;
 import com.example.week4.dto.user.ResponseUserDto;
 import com.example.week4.entity.Order;
 import com.example.week4.enums.Status;
@@ -9,7 +10,7 @@ import lombok.*;
 
 import java.util.List;
 
-import static com.example.week4.dto.product.ResponseProductDTO.toResponseProductDTO;
+import static com.example.week4.dto.product.ResponseProductDto.toResponseProductDTO;
 import static com.example.week4.dto.user.ResponseUserDto.toResponseUserDto;
 
 @Getter
@@ -20,7 +21,7 @@ import static com.example.week4.dto.user.ResponseUserDto.toResponseUserDto;
 public class ResponseOrderDto {
     private int id;
     private String status;
-    private ResponseProductDTO product;
+    private ResponseProductDto product;
     private ResponseUserDto user;
 
     public static ResponseOrderDto toResponseOrderDTO(Order order){

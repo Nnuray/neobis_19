@@ -1,10 +1,6 @@
 package com.example.week4.dto.product;
 
 import com.example.week4.entity.Product;
-import jakarta.persistence.Column;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
 import lombok.*;
 
 @Getter
@@ -12,14 +8,14 @@ import lombok.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ResponseProductDTO {
+public class ResponseProductDto {
     private int id;
     private String productName;
     private double price;
     private float score;
 
-    public static ResponseProductDTO toResponseProductDTO(Product product){
-        return ResponseProductDTO.builder()
+    public static ResponseProductDto toResponseProductDTO(Product product){
+        return ResponseProductDto.builder()
                 .id(product.getId())
                 .productName(product.getProductName())
                 .price(product.getPrice())
