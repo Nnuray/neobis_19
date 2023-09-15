@@ -23,7 +23,8 @@ public class WebSecurityConfiguration {
             "/swagger-ui.html",
             "/swagger-ui/**",
             "/v3/api-docs/**",
-            "/api/auth/**"
+            "/api/auth/register",
+            "/api/auth/authenticate"
     };
 
 

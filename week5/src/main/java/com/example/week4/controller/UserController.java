@@ -24,8 +24,8 @@ public class UserController {
         return "<h2> hey, user</h2>";
     }
 
-    @GetMapping("/{id}")   //endpoint1
-    public ResponseEntity<ResponseUserDto> getUserById(@PathVariable int id){
+    @GetMapping("/{getById}")   //endpoint1
+    public ResponseEntity<ResponseUserDto> getUserById(@PathVariable int id, @PathVariable String getById){
         ResponseUserDto user = userService.getUserById(id);
         if(user == null){
             return ResponseEntity.notFound().build();
@@ -37,23 +37,23 @@ public class UserController {
         return ResponseEntity.ok(responseUserDto);
     }
 
-    @PostMapping()    //endpoint2
+    @PostMapping("/createUser")    //endpoint2
     public void createUser(@RequestBody RequestUserDto userDto) {
         userService.createUser(userDto);
     }
 
-    @PutMapping("/{id}")   //endpoints3
-    public void updateUser(@PathVariable Integer id, @RequestBody ResponseUserDto responseUserDto) {
+    @PutMapping("/{updateById}")   //endpoints3
+    public void updateUser(@PathVariable Integer id, @RequestBody ResponseUserDto responseUserDto, @PathVariable String updateById) {
             userService.updateUser(id, responseUserDto);
         }
 
-    @DeleteMapping("/{id}")  //endpoint4
-    public void deleteUser(@PathVariable Integer id) {
+    @DeleteMapping("/{deleteById}")  //endpoint4
+    public void deleteUser(@PathVariable Integer id, @PathVariable String deleteById) {
         userService.deleteUser(id);
     }
 
-    @GetMapping()
-    public List<ResponseUserDto> getAllUsers() {
+    @GetMapping("/{getAllUser}")
+    public List<ResponseUserDto> getAllUsers(@PathVariable String getAllUser) {
         return userService.getAllUsers();
     }
 

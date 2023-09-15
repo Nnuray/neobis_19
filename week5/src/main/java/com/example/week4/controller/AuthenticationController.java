@@ -26,7 +26,6 @@ public class AuthenticationController {
     }
 
     @PostMapping("/authenticate")
-    @PreAuthorize("hasAnyAuthority('ADMIN')")
     public ResponseEntity<AuthenticationResponse> register (
             @RequestBody AuthenticationRequest request
     ) {
