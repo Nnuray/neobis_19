@@ -7,6 +7,7 @@ import com.example.week4.entity.User;
 import com.example.week4.service.OrderService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import io.swagger.v3.oas.annotations.security.SecurityRequirements;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.AllArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -15,6 +16,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @AllArgsConstructor
 @RequestMapping("/api/orders")
+@Tag(
+        name = "Контроллер для заказа",
+        description = "В этом контроллере есть возможности получить, создать заказ"
+)
 public class OrderController {
     private final OrderService orderService;
 

@@ -4,6 +4,7 @@ import com.example.week4.dto.user.RequestUserDto;
 import com.example.week4.dto.user.ResponseUserDto;
 import com.example.week4.service.UserService;
 import io.swagger.v3.oas.annotations.security.SecurityRequirement;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -12,6 +13,10 @@ import java.util.List;
 
 @RestController
 @RequestMapping("/api/users")
+@Tag(
+        name = "Контроллер для пользователя",
+        description = "В этом контроллере есть возможности получить, создать, обновить, удалить пользователя"
+)
 public class UserController {
     private final UserService userService;
 
