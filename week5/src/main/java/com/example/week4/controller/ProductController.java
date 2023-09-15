@@ -4,6 +4,7 @@ import com.example.week4.dto.product.RequestProductDto;
 import com.example.week4.dto.product.ResponseProductDto;
 import com.example.week4.entity.Product;
 import com.example.week4.service.ProductService;
+import io.swagger.v3.oas.annotations.security.SecurityRequirement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -19,6 +20,7 @@ public class ProductController {
         this.productService = productService;
     }
     @PostMapping("/createProduct")
+    @SecurityRequirement(name = "JWT")
     public ResponseEntity<ResponseProductDto> createProduct(@RequestBody RequestProductDto requestProductDto) {
         Product createdProduct = productService.createProduct(requestProductDto);
         ResponseProductDto responseProductDto = ResponseProductDto.toResponseProductDTO(createdProduct);
@@ -27,6 +29,7 @@ public class ProductController {
     }
 
     @DeleteMapping("/{productId}")
+    @SecurityRequirement(name = "JWT")
     public ResponseEntity<Void> deleteProduct(@PathVariable int productId) {
         productService.deleteProduct(productId);
         return ResponseEntity.noContent().build();

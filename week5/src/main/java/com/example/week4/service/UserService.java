@@ -24,7 +24,9 @@ public class UserService {
     }
 
     public ResponseUserDto getUserById(int id) {
-        return toResponseUserDto(userRepository.findById(id).get());
+        User user = userRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));
+        return toResponseUserDto(user);
     }
     public String createUser(RequestUserDto userDto) {
         User user = User.builder()
@@ -53,7 +55,10 @@ public class UserService {
     }
 
     public void deleteUser(int userId) {
-        userRepository.deleteById(userId);
+        User user = userRepository.findById(userId)
+                .orElseThrow(() -> new IllegalArgumentException("User not found"));
+        user.setStatus(Status.DELETED);
+        userRepository.save(user);
     }
 
     public List<ResponseUserDto> getAllUsers() {

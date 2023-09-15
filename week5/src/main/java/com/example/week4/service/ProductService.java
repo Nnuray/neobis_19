@@ -15,10 +15,14 @@ public class ProductService {
 
 
     public Product createProduct(RequestProductDto requestProductDto) {
-        return null;
+        Product product = new Product();
+        product.setProductName(requestProductDto.getProductName());
+        product.setPrice(requestProductDto.getPrice());
+        product.setScore(requestProductDto.getScore());
+        return productRepository.save(product);
     }
 
     public void deleteProduct(int productId) {
-
+        productRepository.deleteById(productId);
     }
 }

@@ -26,8 +26,8 @@ public class ResponseUserDto {
                 .lastName(user.getLastName())
                 .phoneNumber(user.getPhoneNumber())
                 .email(user.getEmail())
-                .status(user.getStatus().name())
                 .role(user.getRole().name())
+                .status(user.getStatus().name())
                 .build();
     }
 

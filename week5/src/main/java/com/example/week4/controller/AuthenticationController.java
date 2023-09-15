@@ -4,6 +4,8 @@ import com.example.week4.dto.auth.AuthenticationRequest;
 import com.example.week4.dto.auth.AuthenticationResponse;
 import com.example.week4.dto.auth.RegisterRequest;
 import com.example.week4.service.AuthenticationService;
+import io.swagger.v3.oas.annotations.Operation;
+import io.swagger.v3.oas.annotations.tags.Tag;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.access.prepost.PreAuthorize;
@@ -15,10 +17,17 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 @RequestMapping("/api/auth")
 @RequiredArgsConstructor
+@Tag(
+        name = "Контроллер для авторизации/регистрации",
+        description = "В этом контроллере есть возможности авторизации и регистрации"
+) // Название и Описание контроллера в сваггере
 public class AuthenticationController {
     private final AuthenticationService service;
 
     @PostMapping("/register")
+    @Operation(
+            summary = "Регистрация нового аккаунта"
+    ) // Описание метода в сваггере
     public ResponseEntity<AuthenticationResponse> register(
             @RequestBody RegisterRequest request
     ) {
@@ -26,6 +35,9 @@ public class AuthenticationController {
     }
 
     @PostMapping("/authenticate")
+    @Operation(
+            summary = "Авторизация"
+    )
     public ResponseEntity<AuthenticationResponse> register (
             @RequestBody AuthenticationRequest request
     ) {

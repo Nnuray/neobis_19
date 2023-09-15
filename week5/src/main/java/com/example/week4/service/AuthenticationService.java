@@ -3,6 +3,7 @@ package com.example.week4.service;
 import com.example.week4.dto.auth.AuthenticationRequest;
 import com.example.week4.dto.auth.AuthenticationResponse;
 import com.example.week4.dto.auth.RegisterRequest;
+import com.example.week4.enums.Status;
 import com.example.week4.jwt.JwtService;
 import com.example.week4.enums.Role;
 import com.example.week4.entity.User;
@@ -31,6 +32,7 @@ public class AuthenticationService {
                 .email(request.getEmail())
                 .password(passwordEncoder.encode(request.getPassword()))
                 .role(Role.USER)
+                .status(Status.ACTIVE)
                 .build();
         repository.save(user);
         var jwtToken = jwtService.generateToken(user);

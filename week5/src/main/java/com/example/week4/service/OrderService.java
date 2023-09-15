@@ -40,7 +40,9 @@ public class OrderService {
         orderRepository.deleteById(id);
     }
 
-    public ResponseUserDto getOrderById(int id) {
-        return null;
+    public ResponseOrderDto getOrderById(int id) {
+        Order order = orderRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("Order not found"));
+        return toResponseOrderDTO(order);
     }
 }
